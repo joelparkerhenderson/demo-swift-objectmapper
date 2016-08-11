@@ -1,6 +1,15 @@
 # Demo Swift ObjectMapper
 
-This is a demonstration of Apple iOS Xcode using the Swift language to create a project with the ObjectMapper tool that converts between JSON and models.
+This demonstration shows:
+
+  * The [Swift](http://swift.org) programming language with
+    [Apple](http://apple.com)
+    [iOS](http://www.apple.com/ios/)
+    [Xcode](https://developer.apple.com/xcode/)
+
+  * How to use the [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) tool 
+    that converts between [JSON](http://json.org) and 
+    [models](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
 
 This README describes how to create the project, if you want to try doing it yourself.
 
