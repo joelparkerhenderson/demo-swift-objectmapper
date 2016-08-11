@@ -83,6 +83,6 @@ To learn more about Swift and ObjectMapper, see the official documentation for [
 * Package: demo_swift_objectmapper
 * Version: 1.0.0
 * Created: 2016-05-30
-* Updated: 2016-05-30
-* License: GPL
+* Updated: 2016-08-11
+* License: BSD, GPL, MIT
 * Contact: Joel Parker Henderson (joel@joelparkerhenderson.com)
