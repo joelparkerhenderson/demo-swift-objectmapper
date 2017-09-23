@@ -1,88 +1,121 @@
 # Demo Swift ObjectMapper
 
+<img src="README.png" alt="JSON" width="244" height="80"/>
+
 This demonstration shows:
 
   * The [Swift](http://swift.org) programming language with
     [Apple](http://apple.com)
-    [iOS](http://www.apple.com/ios/)
     [Xcode](https://developer.apple.com/xcode/)
+    [iOS](http://www.apple.com/ios/)
 
   * How to use the [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) tool 
     that converts between [JSON](http://json.org) and 
     [models](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
 
-This README describes how to create the project, if you want to try doing it yourself.
+This README describes how to create the demo.
 
-To learn more about Swift and ObjectMapper, see the official documentation for [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)
 
-## How to create the project
+## Start
 
-1. Launch Xcode and create a new project. We call ours "Demo Swift ObjectMapper".
+To use this demo, you can clone this repo, or you can use this README to create your own project.
 
-  * Need help? See our repo [demo_swift_hello_world](https://github.com/joelparkerhenderson/demo_swift_hello_world).
+If you clone this repo, then be aware that there are multiple git branches, so pick the one you want.
 
-1. Create a simple way to print some text to the screen, such as a text view with an IBOutlet named "demoTextView".
+  * swift-4-xcode-9: Swift version 4, Xcode version 9, iOS version 11.
 
-  * Need help? See our repo [demo_swift_text_view](https://github.com/joelparkerhenderson/demo_swift_text_view).
+  * swift-3-xcode-8: Swift version 3, Xcode version 8, iOS version 10.
 
-1. Add ObjectMapper to the project.
 
-  * To add ObjectMapper as a dependency, we prefer using Carthage.
+## Create the project
 
-  * If you prefer, you can add it by using a dynamic framework or using Cocoapods.
+Launch Xcode and create a new Xcode project. 
+
+  * Use iOS template "Single View Application" and Product Name "Demo Swift ObjectMapper"
+
+  * [Help](doc/setup/create_a_new_xcode_project.md)
+        
+Create a simple way to print some text to the screen.
+
+  * We create a text view object and IBOutlet named "demoTextView".
+
+  * [Help](doc/setup/create_a_text_view.md)
+
+Add ObjectMapper to the project. We suggest using Carthage or Cocoapods.
+
+  * Carthage `Cartfile`:
+
+    github "Hearst-DD/ObjectMapper" ~> 2.2
+
+  * [Help](doc/setup/add_carthage_frameworks.md)
+
 
 ## Create a model class
 
-1. Create a directory named "Models".
+Create a new group named "Models".
 
-1. Create a model called "Item" that implements the ObjectMappable interface:
+Create a new iOS Swift file named "Item.swift", and when you save it, also create a new disk folder named "Models".
 
-        import Foundation
-        import ObjectMapper
+Edit `Item.swift`.
 
-        class Item: Mappable {
+```swift
+import Foundation
+import ObjectMapper
 
-          var name: String?
+class Item: Mappable {
 
-          // Implement Mappable
-          required init?(_ map: Map) {
-          }
+  var name: String?
 
-          // Implement Mappable
-          func mapping(map: Map) {
-            name <- map["name"]
-          }
+  // Implement Mappable
+  required init?(map: Map) {
+  }
 
-        }
+  // Implement Mappable
+  func mapping(map: Map) {
+    name <- map["name"]
+  }
+
+}
+```
+
 
 ## Instantiate a model
 
-1. Edit `ViewController.swift`.
+Edit `ViewController.swift`.
 
-1. Add simple code to create a model object, then print some output to the screen.
+Add simple code to create a model object, then print some output to the screen.
 
-        import UIKit
-        import ObjectMapper
+```swift
+import UIKit
+import ObjectMapper
 
-        class ViewController: UIViewController {
+class ViewController: UIViewController {
 
-          @IBOutlet weak var demoTextView: UITextView!
+  @IBOutlet weak var demoTextView: UITextView!
 
-          override func viewDidLoad() {
-            super.viewDidLoad()
-            let item = Mapper<Item>().map("{\"name\":\"Demo Item\"}")
-            demoTextView.text = item!.name!
-          }
-		  …
-		}
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    let item = Mapper<Item>().map(JSONString: "{\"name\":\"Demo Item\"}")
+    demoTextView.text = item!.name!
+  }
+  …
+```
 
-1. Run the app. The screen shows the item name, which is "Demo Item".
+
+## Run
+
+Run the app. 
+
+The Simulator screen shows the item name, which is "Demo Item".
+
+Congratulations, you're successful!
+
 
 ## Tracking
 
 * Package: demo_swift_objectmapper
-* Version: 1.0.0
+* Version: 3.0.0
 * Created: 2016-05-30
-* Updated: 2016-08-11
+* Updated: 2017-09-22
 * License: BSD, GPL, MIT
-* Contact: Joel Parker Henderson (joel@joelparkerhenderson.com)
+* Contact: Joel Parker Henderson (http://joelparkerhenderson.com)
